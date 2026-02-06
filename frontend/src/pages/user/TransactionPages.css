@@ -1,0 +1,169 @@
+.transaction-container {
+    padding: 2rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.transaction-card {
+    background: white;
+    border-radius: 0.75rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+}
+
+.transaction-card .card-icon {
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.card-description {
+    text-align: center;
+    color: #6b7280;
+    margin-bottom: 1.5rem;
+}
+
+.balance-display {
+    background: #f0fdf4;
+    border: 1px solid #86efac;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.balance-display span {
+    color: #166534;
+}
+
+.balance-display strong {
+    color: #15803d;
+    font-size: 1.25rem;
+}
+
+.transaction-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.transaction-form .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.transaction-form label {
+    font-weight: 600;
+    color: #374151;
+    font-size: 0.9rem;
+}
+
+.transaction-form input,
+.transaction-form select {
+    padding: 0.75rem 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    transition: all 0.2s;
+}
+
+.transaction-form input:focus,
+.transaction-form select:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.transaction-form small {
+    color: #6b7280;
+    font-size: 0.875rem;
+}
+
+.message {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+}
+
+.message.success {
+    background: #d1fae5;
+    color: #065f46;
+    border: 1px solid #86efac;
+}
+
+.message.error {
+    background: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #fca5a5;
+}
+
+.info-box {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    color: #1e40af;
+    font-size: 0.875rem;
+}
+
+.treasury-note {
+    background: #fef3c7;
+    border-color: #fde68a;
+    color: #92400e;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .transaction-container {
+        padding: 1rem;
+    }
+
+    .transaction-card {
+        padding: 1.5rem;
+    }
+
+    .transaction-card .card-icon {
+        font-size: 2.5rem;
+    }
+
+    .card-description {
+        font-size: 0.875rem;
+    }
+
+    .balance-display {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+    }
+
+    .balance-display strong {
+        font-size: 1.125rem;
+    }
+
+    .transaction-form input,
+    .transaction-form select {
+        font-size: 16px;
+        /* Prevents zoom on iOS */
+    }
+
+    .info-box {
+        font-size: 0.813rem;
+    }
+
+    .btn-primary {
+        width: 100%;
+    }
+}
+
+/* Tablet Responsive */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .transaction-container {
+        max-width: 100%;
+        padding: 1.5rem;
+    }
+}

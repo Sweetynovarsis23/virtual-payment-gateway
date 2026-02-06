@@ -1,0 +1,7 @@
+# Build settings
+NODE_VERSION=18
+NPM_VERSION=9
+
+# Application settings
+NODE_ENV=production
+PORT=10000
