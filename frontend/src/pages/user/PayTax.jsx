@@ -11,7 +11,7 @@ const PayTax = () => {
     const [taxType, setTaxType] = useState('GENERAL');
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState(null);
-    const { wallet } = useAuth();
+    const { wallet, refreshWallet } = useAuth();
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
@@ -43,8 +43,10 @@ const PayTax = () => {
             });
 
             if (data.status === 'SUCCESS') {
+                await refreshWallet(); // Refresh wallet balance
                 setAmount('');
-                setTimeout(() => navigate('/dashboard'), 3000);
+                setTaxType('GENERAL');
+                setTimeout(() => navigate('/dashboard'), 2000);
             }
         } catch (error) {
             setMessage({

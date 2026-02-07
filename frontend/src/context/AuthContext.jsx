@@ -50,6 +50,18 @@ export const AuthProvider = ({ children }) => {
         setWallet(null);
     };
 
+    const fetchWallet = async () => {
+        const token = localStorage.getItem('token');
+        if (token) {
+            try {
+                const response = await authAPI.getProfile();
+                setWallet(response.data.data.wallet);
+            } catch (error) {
+                console.error("Failed to fetch wallet:", error);
+            }
+        }
+    };
+
     const value = {
         user,
         wallet,
@@ -57,6 +69,7 @@ export const AuthProvider = ({ children }) => {
         login,
         register,
         logout,
+        refreshWallet: fetchWallet, // Expose refresh function
         isAuthenticated: !!user,
         isAdmin: user?.role === 'admin'
     };

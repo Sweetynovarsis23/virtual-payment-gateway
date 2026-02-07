@@ -15,7 +15,7 @@ const Payout = () => {
     const [loading, setLoading] = useState(false);
     const [loadingAccounts, setLoadingAccounts] = useState(true);
     const [message, setMessage] = useState(null);
-    const { wallet, user } = useAuth();
+    const { wallet, user, refreshWallet } = useAuth();
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -80,6 +80,7 @@ const Payout = () => {
                         });
 
                         if (verifyResponse.data.success) {
+                            await refreshWallet(); // Refresh wallet balance
                             setMessage({
                                 type: 'success',
                                 text: `Successfully sent ₹${amount}!`
@@ -150,6 +151,7 @@ const Payout = () => {
             });
 
             if (data.status === 'SUCCESS') {
+                await refreshWallet(); // Refresh wallet balance
                 setAmount('');
                 setTimeout(() => navigate('/dashboard'), 2000);
             }
