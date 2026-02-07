@@ -16,6 +16,9 @@ import upiRoutes from './routes/upi.js';
 
 const app = express();
 
+// Trust proxy - needed for deployment on platforms like Render, Heroku, etc.
+app.set('trust proxy', 1);
+
 // Middleware
 app.use(cors({
     origin: config.frontendUrl,
