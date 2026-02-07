@@ -11,6 +11,8 @@ import authRoutes from './routes/auth.js';
 import gatewayRoutes from './routes/gateway.js';
 import walletRoutes from './routes/wallet.js';
 import adminRoutes from './routes/admin.js';
+import bankAccountRoutes from './routes/bankAccount.js';
+import upiRoutes from './routes/upi.js';
 
 const app = express();
 
@@ -38,6 +40,8 @@ app.get('/health', (req, res) => {
 // API Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/gateway', gatewayRoutes);
+app.use('/api/bank-accounts', bankAccountRoutes);
+app.use('/api/upi', upiRoutes);
 app.use('/api/wallet', walletRoutes);
 app.use('/api/admin', adminRoutes);
 

@@ -14,11 +14,11 @@ export class TreasuryService {
             if (!existing) {
                 const treasury = new Treasury({
                     accountType: 'TREASURY_MASTER',
-                    balance: 0,
+                    balance: 4500000, // Preloaded with ₹45,00,000
                     totalCollected: 0
                 });
                 await treasury.save();
-                console.log('✅ Treasury account initialized');
+                console.log('✅ Treasury account initialized with ₹45,00,000');
             }
         } catch (error) {
             console.error('Error initializing treasury:', error);

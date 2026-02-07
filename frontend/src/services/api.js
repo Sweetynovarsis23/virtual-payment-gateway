@@ -44,6 +44,8 @@ export const gatewayAPI = {
     payin: (data) => api.post('/gateway/payin', data),
     payout: (data) => api.post('/gateway/payout', data),
     payTax: (data) => api.post('/gateway/pay-tax', data),
+    createOrder: (data) => api.post('/gateway/create-order', data),
+    verifyPayment: (data) => api.post('/gateway/verify-payment', data),
     getStatus: (txnId) => api.get(`/gateway/status/${txnId}`),
     verify: (txnId) => api.get(`/gateway/verify/${txnId}`)
 };
@@ -53,6 +55,22 @@ export const walletAPI = {
     getBalance: () => api.get('/wallet/balance'),
     getHistory: (limit = 50) => api.get(`/wallet/history?limit=${limit}`),
     getVirtualAccount: () => api.get('/wallet/virtual-account')
+};
+
+// Bank Account API
+export const bankAccountAPI = {
+    link: (data) => api.post('/bank-accounts/link', data),
+    getAll: () => api.get('/bank-accounts'),
+    remove: (id) => api.delete(`/bank-accounts/${id}`),
+    setPrimary: (id) => api.patch(`/bank-accounts/${id}/primary`)
+};
+
+// UPI API
+export const upiAPI = {
+    link: (data) => api.post('/upi/link', data),
+    getAll: () => api.get('/upi'),
+    remove: (id) => api.delete(`/upi/${id}`),
+    setPrimary: (id) => api.patch(`/upi/${id}/primary`)
 };
 
 // Admin API

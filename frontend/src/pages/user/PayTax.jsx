@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { FaLandmark } from 'react-icons/fa';
 import { useAuth } from '../../context/AuthContext';
 import { gatewayAPI } from '../../services/api';
 import { formatCurrency } from '../../utils/formatters';
@@ -37,11 +38,12 @@ const PayTax = () => {
             setMessage({
                 type: data.status === 'SUCCESS' ? 'success' : 'error',
                 text: data.status === 'SUCCESS'
-                    ? `Tax payment of ${amount} successful! Receipt ID: ${data.receiptId}`
+                    ? `Tax payment of ₹${amount} successful! Receipt ID: ${data.receiptId}`
                     : 'Tax payment failed. Please try again.'
             });
 
             if (data.status === 'SUCCESS') {
+                setAmount('');
                 setTimeout(() => navigate('/dashboard'), 3000);
             }
         } catch (error) {
@@ -59,7 +61,9 @@ const PayTax = () => {
             <h1 className="page-title">Pay Government Tax</h1>
 
             <div className="transaction-card">
-                <div className="card-icon">🏛️</div>
+                <div className="card-icon">
+                    <FaLandmark size={48} color="#dc2626" />
+                </div>
 
                 <p className="card-description">
                     Pay tax directly to Government Treasury from your wallet
@@ -78,20 +82,6 @@ const PayTax = () => {
 
                 <form onSubmit={handleSubmit} className="transaction-form">
                     <div className="form-group">
-                        <label>Tax Amount (₹)</label>
-                        <input
-                            type="number"
-                            value={amount}
-                            onChange={(e) => setAmount(e.target.value)}
-                            min="1"
-                            max={wallet?.balance || 100000}
-                            required
-                            placeholder="Enter tax amount"
-                        />
-                        <small>Available: {formatCurrency(wallet?.balance || 0)}</small>
-                    </div>
-
-                    <div className="form-group">
                         <label>Tax Type</label>
                         <select
                             value={taxType}
@@ -103,6 +93,20 @@ const PayTax = () => {
                             <option value="PROPERTY_TAX">Property Tax</option>
                             <option value="PROFESSIONAL_TAX">Professional Tax</option>
                         </select>
+                    </div>
+
+                    <div className="form-group">
+                        <label>Tax Amount (₹)</label>
+                        <input
+                            type="number"
+                            value={amount}
+                            onChange={(e) => setAmount(e.target.value)}
+                            min="1"
+                            max={wallet?.balance || 100000}
+                            required
+                            placeholder="Enter tax amount"
+                        />
+                        <small>Available: {formatCurrency(wallet?.balance || 0)}</small>
                     </div>
 
                     <button type="submit" className="btn-primary" disabled={loading}>

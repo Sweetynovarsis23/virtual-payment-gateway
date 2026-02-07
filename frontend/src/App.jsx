@@ -9,6 +9,10 @@ import Payin from './pages/user/Payin';
 import Payout from './pages/user/Payout';
 import PayTax from './pages/user/PayTax';
 import History from './pages/user/History';
+import BankAccounts from './pages/user/BankAccounts';
+import LinkBankAccount from './pages/user/LinkBankAccount';
+import LinkUPI from './pages/user/LinkUPI';
+import ManageUPI from './pages/user/ManageUPI';
 import AdminDashboard from './pages/admin/AdminDashboard';
 import Users from './pages/admin/Users';
 import Transactions from './pages/admin/Transactions';
@@ -104,6 +108,46 @@ function AppRoutes() {
           <ProtectedRoute>
             <Layout>
               <History />
+            </Layout>
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/bank-accounts"
+        element={
+          <ProtectedRoute>
+            <Layout>
+              <BankAccounts />
+            </Layout>
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/link-bank-account"
+        element={
+          <ProtectedRoute>
+            <Layout>
+              <LinkBankAccount />
+            </Layout>
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/link-upi"
+        element={
+          <ProtectedRoute>
+            <Layout>
+              <LinkUPI />
+            </Layout>
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/manage-upi"
+        element={
+          <ProtectedRoute>
+            <Layout>
+              <ManageUPI />
             </Layout>
           </ProtectedRoute>
         }

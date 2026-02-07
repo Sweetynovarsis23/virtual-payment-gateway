@@ -9,7 +9,8 @@ import {
     FaUsers,
     FaExchangeAlt,
     FaUniversity,
-    FaClipboardList
+    FaClipboardList,
+    FaMobileAlt
 } from 'react-icons/fa';
 import './Sidebar.css';
 
@@ -19,6 +20,8 @@ const Sidebar = ({ isAdmin }) => {
         { path: '/payin', icon: FaMoneyBillWave, label: 'Add Money' },
         { path: '/payout', icon: FaPaperPlane, label: 'Send Money' },
         { path: '/pay-tax', icon: FaLandmark, label: 'Pay Tax' },
+        { path: '/bank-accounts', icon: FaUniversity, label: 'Bank Accounts' },
+        { path: '/manage-upi', icon: FaMobileAlt, label: 'UPI' },
         { path: '/history', icon: FaHistory, label: 'History' }
     ];
 
