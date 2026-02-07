@@ -14,15 +14,11 @@ const Transactions = () => {
 
     const fetchTransactions = async () => {
         try {
-            const token = localStorage.getItem('token');
-            const params = new URLSearchParams();
-            if (filter.type) params.append('type', filter.type);
-            if (filter.status) params.append('status', filter.status);
+            const filters = {};
+            if (filter.type) filters.type = filter.type;
+            if (filter.status) filters.status = filter.status;
 
-            const response = await axios.get(
-                `http://localhost:5000/api/admin/transactions?${params.toString()}`,
-                { headers: { Authorization: `Bearer ${token}` } }
-            );
+            const response = await adminAPI.getTransactions(filters);
             setTransactions(response.data.data.transactions);
         } catch (error) {
             console.error('Error fetching transactions:', error);
