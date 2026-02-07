@@ -19,7 +19,10 @@ const Login = () => {
 
         try {
             await login(email, password);
-            navigate('/dashboard');
+            // Redirect based on user role
+            const userData = await authAPI.getProfile();
+            const isAdmin = userData.data.data.role === 'admin';
+            navigate(isAdmin ? '/admin' : '/dashboard');
         } catch (err) {
             setError(err.response?.data?.message || 'Login failed');
         } finally {
