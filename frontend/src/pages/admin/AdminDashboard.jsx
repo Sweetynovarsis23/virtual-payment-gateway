@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
-import axios from 'axios';
+import { adminAPI } from '../../services/api';
 import { formatCurrency } from '../../utils/formatters';
 import {
     FaShieldAlt,
@@ -33,10 +33,7 @@ const AdminDashboard = () => {
 
     const fetchStats = async () => {
         try {
-            const token = localStorage.getItem('token');
-            const response = await axios.get('http://localhost:5000/api/admin/stats', {
-                headers: { Authorization: `Bearer ${token}` }
-            });
+            const response = await adminAPI.getStats();
             setStats(response.data.data);
         } catch (error) {
             console.error('Error fetching admin stats:', error);

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+import { adminAPI } from '../../services/api';
 import { formatCurrency, formatDateTime, getStatusColor, getTransactionTypeLabel } from '../../utils/formatters';
 import '../user/UserDashboard.css';
 

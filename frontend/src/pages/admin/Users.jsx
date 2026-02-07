@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+import { adminAPI } from '../../services/api';
 import { formatCurrency, formatDateTime } from '../../utils/formatters';
 import '../user/UserDashboard.css';
 
@@ -13,10 +13,7 @@ const Users = () => {
 
     const fetchUsers = async () => {
         try {
-            const token = localStorage.getItem('token');
-            const response = await axios.get('http://localhost:5000/api/admin/users', {
-                headers: { Authorization: `Bearer ${token}` }
-            });
+            const response = await adminAPI.getUsers();
             setUsers(response.data.data.users);
         } catch (error) {
             console.error('Error fetching users:', error);
